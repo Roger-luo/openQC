@@ -1,5 +1,7 @@
 using openQC
 using Base.Test
 
-# write your own tests here
-@test 1 == 2
+# include("consts.jl")
+# include("states/state.jl")
+# include("adiabatic.jl")
+include("cooling.jl")
