@@ -1,7 +1,7 @@
 using openQC
 using Base.Test
 
-# include("consts.jl")
-# include("states/state.jl")
-# include("adiabatic.jl")
-include("cooling.jl")
+include("utils/consts.jl")
+include("utils/qusat.jl")
+include("states/state.jl")
+include("aqc/aqc.jl")

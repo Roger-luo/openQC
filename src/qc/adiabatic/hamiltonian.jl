@@ -1,5 +1,3 @@
-using QuSAT
-
 # Base Hamiltonian
 function bHamiltonian(bitnum::Int)
     diagv = Array(Complex128,2^bitnum);

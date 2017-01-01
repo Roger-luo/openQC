@@ -5,7 +5,12 @@ const consts = Dict()
 
 #import NIST data set
 const NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS = "srd121_allascii_2014.json" 
-const NIST_consts = JSON.parsefile("src/utils/data/"*NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS)["constant"]
+const NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS_DIR = Pkg.dir("openQC")*"/src/utils/data/"*NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS
+if !isfile(NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS_DIR)
+    download("https://nist.gov/srd/srd_data//srd121_allascii_2014.json",NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS_DIR)
+end
+
+const NIST_consts = JSON.parsefile(NIST_CODATA_FUNDAMENTAL_PHYSICS_CONSTS_DIR)["constant"]
 for each_const in NIST_consts
     each_const["Value"] = replace(each_const["Value"],r"( )[^e]","_")
     each_const["Value"] = replace(each_const["Value"]," ","")
